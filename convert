@@ -1,1 +1,5 @@
-gst-launch-0.10 filesrc location=file.mp3 ! mad ! audioconvert ! wavenc ! filesink location=file.wav
+#!/bin/bash
+
+arg = $1
+
+gst-launch-0.10 filesrc location=$1 ! mad ! audioconvert ! wavenc ! filesink location=$1.wav
