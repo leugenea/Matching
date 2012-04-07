@@ -1,0 +1,1 @@
+gst-launch-0.10 filesrc location=file.mp3 ! mad ! audioconvert ! wavenc ! filesink location=file.wav
