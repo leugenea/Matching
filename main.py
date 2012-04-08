@@ -25,7 +25,7 @@ def main():
     temp[i, :] = temp[i, :] * ham
   
   points_out = (fft_length_in_format / 2) + 1
-  powers = zeros((num_of_ffts, points_out), float)
+  powers = zeros((num_of_ffts, points_out), complex)
   
   for i in range(num_of_ffts):
     powers[i, :] = rfft(temp[i, :])
