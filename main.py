@@ -15,7 +15,7 @@ def main():
   temp = zeros((num_of_ffts, fft_length), float) 
   
   for i in range(num_of_ffts):
-    temp[i, :] = array(struct.unpack(("%d" %(fft_length))+format), input.readframes(fft_length), float) - 2**(8*sample_width)
+    temp[i, :] = array(struct.unpack(("%d" %(fft_length))+format, input.readframes(fft_length)), float)- 2**(8*sample_width)
   
   ham = hamming(fft_length)
   for i in range(num_of_ffts):
