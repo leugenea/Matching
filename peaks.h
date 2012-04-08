@@ -22,6 +22,12 @@ struct point {
 vector<point> get_peaks(vector<vector<int> > &spectrum, vector<int> &time,
 		vector<int> &freq);
 
-vector<ull> get_hashes(vector<point> &points, int track_id);
+ull pack(point &from, point &to, int track_id);
+
+int get_time(ull hash);
+
+int get_vector(ull hash);
+
+vector<ull> get_hashes(vector<point> &peaks, int track_id);
 
 #endif /* PEAKS_H_ */
