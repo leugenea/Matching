@@ -16,14 +16,12 @@ typedef unsigned long long ull;
 using namespace std;
 
 struct point {
-	size_t time, freq;
+	int time, freq;
 };
 
-vector<point> get_peaks(vector<vector<size_t> > spectrum, vector<size_t> time,
-		vector<size_t> freq);
+vector<point> get_peaks(vector<vector<int> > &spectrum, vector<int> &time,
+		vector<int> &freq);
 
-ull pack(point from, point to);
-
-vector<ull> get_hashes(vector<point> points, int track_id);
+vector<ull> get_hashes(vector<point> &points, int track_id);
 
 #endif /* PEAKS_H_ */
