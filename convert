@@ -1,5 +1,3 @@
 #!/bin/bash
 
-arg = $1
-
 gst-launch-0.10 filesrc location="$1" ! mad ! audioconvert ! wavenc ! filesink location="$1".wav
