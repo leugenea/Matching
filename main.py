@@ -2,7 +2,7 @@ import wave, sys, struct
 from numpy import zeros, array, hamming, abs, log10
 from numpy.fft import rfft
 
-wavename = "file.mp3.wav"
+wavefile = "file.mp3.wav"
 fft_length = 1024
 sample_width = 4
 format = "I"
