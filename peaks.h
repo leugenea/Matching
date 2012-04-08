@@ -24,6 +24,6 @@ vector<point> get_peaks(vector<vector<size_t> > spectrum, vector<size_t> time,
 
 ull pack(point from, point to);
 
-vector<ull> get_hashes(vector<point> points);
+vector<ull> get_hashes(vector<point> points, int track_id);
 
 #endif /* PEAKS_H_ */

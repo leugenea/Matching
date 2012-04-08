@@ -9,6 +9,7 @@
 #include <algorithm>
 #include "peaks.h"
 
+typedef unsigned long long ull;
 using namespace std;
 
 int dt[] = { -1, 0, 1, 0 };
@@ -39,21 +40,21 @@ vector<point> get_peaks(vector<vector<size_t> > spectrum, vector<size_t> time,
 	return peaks;
 }
 
-ull pack(point from, point to) {
-	return (ull) (from.time) << 32 | (to.time - from.time) << 16 | (to.freq
-			- from.freq);
+ull pack(point from, point to, int track_id) {
+	return ((ull) track_id << 48) | ((ull) (from.time) << 32) | ((to.time
+			- from.time) << 16) | ((to.freq - from.freq));
 }
 
 bool compare(point a, point b) {
 	return a.time < b.time || (a.time == b.time && a.freq < b.freq);
 }
 
-vector<ull> get_hashes(vector<point> points) {
+vector<ull> get_hashes(vector<point> points, int track_id) {
 	sort(points.begin(), points.end(), compare);
 	vector<ull> hashes(points.size());
 	for (size_t i = 0; i < points.size(); i += PEAK_PERIOD) {
 		for (size_t j = i + 1; j < points.size() && j <= i + FANOUT; ++j) {
-			hashes.push_back(pack(points[i], points[j]));
+			hashes.push_back(pack(points[i], points[j], track_id));
 		}
 	}
 	return hashes;
