@@ -12,6 +12,15 @@ formats = { 1 : 'B', 2 : 'i', 4 : 'l' }
 def split_channels(ch, input):
   pass
 
+def process_8bit():
+  pass
+
+def process_16bit():
+  pass
+
+def process_32bit():
+  pass
+
 def main():
   format = formats[sample_width]
   input = wave.open(wavefile, 'rb')
