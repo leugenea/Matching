@@ -6,9 +6,11 @@ wavefile = "file.mp3.wav"
 fft_length_in_frames = 1024
 sample_width = 4
 ch_num = 2
-format = "I"
+
+formats = { 1 : 'B', 2 : 'i', 4 : 'l' }
 
 def main():
+  format = formats[sample_width]
   input = wave.open(wavefile, 'rb')
   sample_rate = input.getframerate()
   samples = input.getnframes()
