@@ -9,14 +9,17 @@ ch_num = 2
 
 formats = { 1 : 'B', 2 : 'i', 4 : 'l' }
 
+def split_channels(ch, input):
+  pass
+
 def main():
   format = formats[sample_width]
   input = wave.open(wavefile, 'rb')
   sample_rate = input.getframerate()
-  samples = input.getnframes()
+  samples_num = input.getnframes()
   ch_num = input.getnchannels()
   fft_length_in_format = fft_length_in_frames * ch_num
-  num_of_ffts = (samples / int(fft_length_in_frames)) - 2
+  num_of_ffts = (samples_num / int(fft_length_in_frames)) - 2
   temp = zeros((num_of_ffts, fft_length_in_format), float) 
   
   for i in range(num_of_ffts):
