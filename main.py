@@ -17,13 +17,16 @@ def convert_input(sample_width, input):
 def split_channels(ch, converted_input):
   pass
 
-def process_8bit():
+def process_8bit(converted_input):
   pass
 
-def process_16bit():
+def process_16bit(converted_input):
   pass
 
-def process_32bit():
+def process_32bit(converted_input):
+  pass
+
+def merge_channels(channels):
   pass
 
 def main():
