@@ -9,6 +9,8 @@ ch_num = 2
 
 formats = { 1 : 'B', 2 : 'i', 4 : 'l' }
 
+types = { 1 : numpy.int8, 2 : numpy.int16, 4 : numpy.int32 }
+
 def split_channels(ch, input):
   pass
 
