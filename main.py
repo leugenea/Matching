@@ -11,7 +11,10 @@ formats = { 1 : 'B', 2 : 'i', 4 : 'l' }
 
 types = { 1 : numpy.int8, 2 : numpy.int16, 4 : numpy.int32 }
 
-def split_channels(ch, input):
+def convert_input(sample_width, input):
+  pass
+
+def split_channels(ch, converted_input):
   pass
 
 def process_8bit():
