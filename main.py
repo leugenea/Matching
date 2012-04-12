@@ -1,5 +1,5 @@
 import wave, sys, struct
-from numpy import zeros, array, hamming, abs, log10
+from numpy import zeros, array, hamming, abs, log10, fromstring
 from numpy.fft import rfft
 
 wavefile = "file.mp3.wav"
@@ -12,7 +12,7 @@ formats = { 1 : 'B', 2 : 'i', 4 : 'l' }
 types = { 1 : numpy.int8, 2 : numpy.int16, 4 : numpy.int32 }
 
 def convert_input(sample_width, input):
-  pass
+  return fromstring(input, dtype=types[sample_width]
 
 def split_channels(ch, converted_input):
   pass
