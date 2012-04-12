@@ -15,7 +15,7 @@ def convert_input(sample_width, input):
   return fromstring(input, dtype=types[sample_width]
 
 def split_channels(ch, converted_input):
-  pass
+  return [converted_input[i::ch] for i in range(ch)]
 
 def process_8bit(converted_input):
   pass
