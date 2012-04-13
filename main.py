@@ -11,8 +11,8 @@ formats = { 1 : 'B', 2 : 'i', 4 : 'l' }
 
 types = { 1 : numpy.int8, 2 : numpy.int16, 4 : numpy.int32 }
 
-def convert_input(sample_width, input):
-  return fromstring(input, dtype=types[sample_width])
+def convert_input(input):
+  return fromstring(input, dtype=types[input.getsampwidth()])
 
 def split_channels(ch, converted_input):
   return [converted_input[i::ch] for i in range(ch)]
@@ -41,6 +41,10 @@ def process(converted_input, sample_width, fft_length, ham):
 
 def merge_channels(channels):
   return reduse( lambda x, y : x + y, channels)
+
+def new_main():
+  input = wave.open(wavefile, 'rb')
+  converted_input = convert_input(input)
 
 def main():
   format = formats[sample_width]
