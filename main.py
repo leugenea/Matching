@@ -1,4 +1,4 @@
-import wave, sys, struct
+import wave, sys, struct, numpy
 from numpy import zeros, array, hamming, abs, log10, fromstring
 from numpy.fft import rfft
 
@@ -17,14 +17,27 @@ def convert_input(sample_width, input):
 def split_channels(ch, converted_input):
   return [converted_input[i::ch] for i in range(ch)]
 
-def process_8bit(converted_input):
-  pass
-
-def process_16bit(converted_input):
-  pass
-
-def process_32bit(converted_input):
-  pass
+def process(converted_input, sample_width, fft_length, ham):
+  if (sample_width == 1):
+    peak = 256 / 2
+    converted_input -= peak
+  
+  num_of_ffts = (len(converted_input) / int(fft_length)) - 2
+  
+  temp = zeros((num_of_ffts, fft_length), float)
+  for i in range(num_of_ffts):
+    temp[i, :] = converted_input[i * fft_length, (i+1) * fft_length]
+    
+  for i in range(num_of_ffts):
+    temp[i, :] = temp[i, :] * ham
+  
+  points_out = (fft_length / 2) + 1
+  powers = zeros((num_of_ffts, points_out), complex)
+  for i in range(num_of_ffts):
+    powers[i, :] = rfft(temp[i, :])
+  
+  powers = 10 * log10(1e-20 + abs(powers))
+  return powers
 
 def merge_channels(channels):
   pass
