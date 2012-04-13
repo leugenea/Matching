@@ -40,7 +40,7 @@ def process(converted_input, sample_width, fft_length, ham):
   return powers
 
 def merge_channels(channels):
-  pass
+  return reduse( lambda x, y : x + y, channels)
 
 def main():
   format = formats[sample_width]
