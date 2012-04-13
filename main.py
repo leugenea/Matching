@@ -12,7 +12,7 @@ formats = { 1 : 'B', 2 : 'i', 4 : 'l' }
 types = { 1 : numpy.int8, 2 : numpy.int16, 4 : numpy.int32 }
 
 def convert_input(sample_width, input):
-  return fromstring(input, dtype=types[sample_width]
+  return fromstring(input, dtype=types[sample_width])
 
 def split_channels(ch, converted_input):
   return [converted_input[i::ch] for i in range(ch)]
