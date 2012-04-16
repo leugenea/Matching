@@ -44,7 +44,8 @@ def merge_channels(channels):
 
 def new_main():
   input = wave.open(wavefile, 'rb')
-  converted_input = convert_input(input)
+  readed_input = input.readframes(input.getnframes())
+  converted_input = convert_input(readed_input)
   splitted = split_channels(converted_input, input.getnchannels())
   processed = []
   ham = hamming(fft_length_in_format)
@@ -80,4 +81,4 @@ def main():
   print powers
 
 if __name__ == "__main__":
-  main()
+  new_main()
