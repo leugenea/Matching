@@ -1,5 +1,5 @@
 import wave, sys, struct, numpy
-from numpy import zeros, array, hamming, abs, log10, fromstring
+from numpy import zeros, array, hamming, abs, log10, fromstring, arange
 from numpy.fft import rfft
 
 wavefile = "file.mp3.wav"
@@ -52,7 +52,9 @@ def new_main():
   for i in range(input.getnchannels()):
     processed.append(process(splitted[i], input.getsampwidth(), fft_length_in_frames, ham))
   result = merge_channels(processed)
-  print result
+  y_axis = 0.5 * float(input.getframerate()) / (fft_length_in_frames/2 + 1) * arange(fft_length_in_frames/2 + 1)
+  x_axis = input.getnframes() / float(input.getframerate()) / ((len(converted_input) / int(fft_length_in_frames)) - 2) * arange((len(converted_input) / int(fft_length_in_frames)) - 2)
+  print [x_axis, y_axis, result]
 
 def main():
   format = formats[sample_width]
