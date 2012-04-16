@@ -27,7 +27,7 @@ def process(converted_input, sample_width, fft_length, ham):
   
   temp = zeros((num_of_ffts, fft_length), float)
   for i in range(num_of_ffts):
-    temp[i, :] = converted_input[i * fft_length, (i+1) * fft_length]
+    temp[i, :] = converted_input[i * fft_length : (i+1) * fft_length]
     
   for i in range(num_of_ffts):
     temp[i, :] = temp[i, :] * ham
@@ -41,14 +41,14 @@ def process(converted_input, sample_width, fft_length, ham):
   return powers
 
 def merge_channels(channels):
-  return reduse( lambda x, y : x + y, channels)
+  return reduce( lambda x, y : x + y, channels)
 
 def new_main():
   input = wave.open(wavefile, 'rb')
   converted_input = convert_input(input)
   splitted = split_channels(converted_input, input.getnchannels())
   processed = []
-  ham = hamming(fft_length_in_format)
+  ham = hamming(fft_length_in_frames)
   for i in range(input.getnchannels()):
     processed.append(process(splitted[i], input.getsampwidth(), fft_length_in_frames, ham))
   result = merge_channels(processed)
